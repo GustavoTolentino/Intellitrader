@@ -11,7 +11,7 @@ namespace Mobile.Services
 {
     internal class DataService
     {
-        HttpClient client = new HttpClient();
+        static HttpClient client = new HttpClient();
         private string apiURI = "http://10.0.2.2:49154/api/usuario";
         /// <summary>
         /// Obtém os itens de produtos
@@ -22,6 +22,12 @@ namespace Mobile.Services
             var usuarioResponses = JsonConvert.DeserializeObject<List<UsuarioResponse>>(response);
             
             return usuarioResponses;
+        }
+        public async Task<UsuarioResponse> GetUserByIdAsync(Guid id)
+        {
+            var response = await client.GetStringAsync(apiURI + "/" + id.ToString());
+            var searchedUser = JsonConvert.DeserializeObject<UsuarioResponse>(response);
+            return searchedUser;
         }
         public async Task<string> PostUserAsync(UsuarioRequest newUser)
         {
@@ -45,11 +51,6 @@ namespace Mobile.Services
         {
             var response = await client.DeleteAsync(apiURI + "/" + id.ToString());
             return "";
-        }
-        public async Task<UsuarioResponse> GetUserByIdAsync(Guid id)
-        {
-            var response = await client.GetAsync(apiURI + "/" + id.ToString());
-            return JsonConvert.DeserializeObject<UsuarioResponse>(response.ToString());
         }
 
 

@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Mobile.Services;
 using Mobile.Models;
+using Mobile.Model;
 
 namespace Mobile
 {
@@ -53,8 +54,7 @@ namespace Mobile
 
         private void listUsers()
         {
-            //"ID: " + x.Id + " " +
-            lv1.ItemsSource = items.Select(x => "Nome: " + x.FirstName + " " + x.Surname + " Idade: " + x.Age);
+            lv1.ItemsSource = items.Select(x => new UsuarioDisplay {DisplayName = "Nome: " + x.FirstName + " " + x.Surname, DisplayAge = "Idade: " + x.Age, Id = x.Id });
         }
         private async void ButtonPut_Clicked(object sender, EventArgs e)
         {
@@ -84,6 +84,25 @@ namespace Mobile
             await ds.DeleteUsersAsync(new Guid(InputIdDelete.Text));
             AtualizaDados();
             InputIdDelete.Text = "";
+        }
+        private async void TextCell_Tapped(object sender, EventArgs e)
+        {
+            DataService ds = new Services.DataService();
+            TextCell obj = sender as TextCell;
+            if (obj != null)
+            {
+                Guid id = (Guid)obj.CommandParameter;
+                InputIdDelete.Text = id.ToString();
+                InputIdUpdate.Text = id.ToString();
+
+                UsuarioResponse clickedUser = await ds.GetUserByIdAsync(id);
+
+                InputIdDelete.Text = clickedUser.Id.ToString();
+                InputIdUpdate.Text = clickedUser.Id.ToString();
+                InputFirstNameUpdate.Text = clickedUser.FirstName.ToString();
+                InputSurnameUpdate.Text = clickedUser.Surname.ToString();
+                InputAgeUpdate.Text = clickedUser.Age.ToString();
+            }
         }
     }
 }

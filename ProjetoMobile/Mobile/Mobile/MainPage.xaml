@@ -25,6 +25,15 @@
                             />
                         <Button x:Name="ButtonAdd" Text="Cadastrar" Clicked="ButtonAdd_Clicked"></Button>
                     </StackLayout>
+                    <StackLayout x:Name="StackDelete" BackgroundColor="AliceBlue">
+                        <Label Text="Excluir Usuario" HorizontalTextAlignment="Center" FontSize="24" TextColor="black"></Label>
+                        <Entry 
+                            x:Name="InputIdDelete"
+                            Text=""
+                            Placeholder="ID"
+                            />
+                        <Button x:Name="ButtonDelete" Text="Excluir" Clicked="ButtonDelete_Clicked"></Button>
+                    </StackLayout>
                     <StackLayout x:Name="StackAtualizar" BackgroundColor="AntiqueWhite">
                         <Label Text="Alterar Usuario" HorizontalTextAlignment="Center" FontSize="24" TextColor="black"></Label>
                         <Entry 
@@ -49,18 +58,16 @@
                             />
                         <Button x:Name="ButtonPut" Text="Atualizar" Clicked="ButtonPut_Clicked"></Button>
                     </StackLayout>
-                    <StackLayout x:Name="StackDelete" BackgroundColor="AliceBlue">
-                        <Label Text="Excluir Usuario" HorizontalTextAlignment="Center" FontSize="24" TextColor="black"></Label>
-                        <Entry 
-                            x:Name="InputIdDelete"
-                            Text=""
-                            Placeholder="ID"
-                            />
-                        <Button x:Name="ButtonDelete" Text="Excluir" Clicked="ButtonDelete_Clicked"></Button>
-                    </StackLayout>
                     <StackLayout x:Name="StackList" BackgroundColor="AntiqueWhite">
                         <Label Text="Listagem de Usuarios" HorizontalTextAlignment="Center" FontSize="24" TextColor="black"></Label>
-                        <ListView x:Name="lv1" SeparatorColor="black" SeparatorVisibility="Default" BackgroundColor="white"/>
+                        <ListView x:Name="lv1" SeparatorColor="black" SeparatorVisibility="Default" BackgroundColor="white"
+                        ItemsSource="{Binding UsuarioDisplay}">
+                            <ListView.ItemTemplate>
+                                <DataTemplate >
+                                    <TextCell Text="{Binding DisplayName}" Detail="{Binding DisplayAge}" Tapped="TextCell_Tapped" CommandParameter="{Binding Id}"/>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
                     </StackLayout>
                 </StackLayout>
             </ScrollView>
