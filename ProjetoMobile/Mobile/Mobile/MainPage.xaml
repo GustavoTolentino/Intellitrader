@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Mobile.MainPage" BackgroundColor="White">
+    <ContentPage.Content>
+        <AbsoluteLayout>
+            <ScrollView AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1">
+                <StackLayout x:Name="StackContent">
+                    <StackLayout x:Name="StackCadastro" BackgroundColor="AliceBlue">
+                        <Label Text="Cadastro de Usuario" HorizontalTextAlignment="Center" FontSize="24" TextColor="black"></Label>
+                        <Entry 
+                            x:Name="InputFirstName"
+                            Text="" 
+                            Placeholder="Nome"
+                            />
+                        <Entry 
+                            x:Name="InputSurname"
+                            Text=""
+                            Placeholder="Sobrenome"
+                            />
+                        <Entry 
+                            x:Name="InputAge"
+                            Text=""
+                            Placeholder="Idade"
+                            />
+                        <Button x:Name="ButtonAdd" Text="Cadastrar" Clicked="ButtonAdd_Clicked"></Button>
+                    </StackLayout>
+                    <StackLayout x:Name="StackAtualizar" BackgroundColor="AntiqueWhite">
+                        <Label Text="Alterar Usuario" HorizontalTextAlignment="Center" FontSize="24" TextColor="black"></Label>
+                        <Entry 
+                            x:Name="InputIdUpdate"
+                            Text="" 
+                            Placeholder="ID"
+                            />
+                        <Entry 
+                            x:Name="InputFirstNameUpdate"
+                            Text="" 
+                            Placeholder="Nome"
+                            />
+                        <Entry 
+                            x:Name="InputSurnameUpdate"
+                            Text=""
+                            Placeholder="Sobrenome"
+                            />
+                        <Entry 
+                            x:Name="InputAgeUpdate"
+                            Text=""
+                            Placeholder="Idade"
+                            />
+                        <Button x:Name="ButtonPut" Text="Atualizar" Clicked="ButtonPut_Clicked"></Button>
+                    </StackLayout>
+                    <StackLayout x:Name="StackDelete" BackgroundColor="AliceBlue">
+                        <Label Text="Excluir Usuario" HorizontalTextAlignment="Center" FontSize="24" TextColor="black"></Label>
+                        <Entry 
+                            x:Name="InputIdDelete"
+                            Text=""
+                            Placeholder="ID"
+                            />
+                        <Button x:Name="ButtonDelete" Text="Excluir" Clicked="ButtonDelete_Clicked"></Button>
+                    </StackLayout>
+                    <StackLayout x:Name="StackList" BackgroundColor="AntiqueWhite">
+                        <Label Text="Listagem de Usuarios" HorizontalTextAlignment="Center" FontSize="24" TextColor="black"></Label>
+                        <ListView x:Name="lv1" SeparatorColor="black" SeparatorVisibility="Default" BackgroundColor="white"/>
+                    </StackLayout>
+                </StackLayout>
+            </ScrollView>
+        </AbsoluteLayout>    
+    </ContentPage.Content>
+</ContentPage>

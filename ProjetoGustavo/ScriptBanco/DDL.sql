@@ -1,8 +1,9 @@
 CREATE DATABASE TesteGustavo 
-
+GO
 --: id (string), firstName (string), surname (string), age (int), creationDate (DateTime).
 
 USE TesteGustavo
+GO
 
 CREATE TABLE Usuario 
 (
